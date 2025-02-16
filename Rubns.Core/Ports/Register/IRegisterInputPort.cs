@@ -1,4 +1,4 @@
-﻿namespace Rubns.Core.Ports
+﻿namespace Rubns.Core.Ports.Register
 {
     public interface IRegisterInputPort
     {
