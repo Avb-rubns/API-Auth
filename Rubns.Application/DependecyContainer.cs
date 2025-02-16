@@ -3,7 +3,7 @@ namespace Rubns.Application
 {
     public static class DependecyContainer
     {
-        public static IServiceCollection AddUseCases(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             return services.ConfigureServices(Assembly.GetExecutingAssembly().Location);
         }

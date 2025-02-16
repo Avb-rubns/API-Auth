@@ -11,5 +11,10 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Rubns.Application\Rubns.Application.csproj" />
+    <ProjectReference Include="..\Rubns.Infrastructure\Rubns.Infrastructure.csproj" />
+  </ItemGroup>
+
 
 </Project>
