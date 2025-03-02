@@ -1,4 +1,6 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace Rubns.WebAPI.Controllers.V1.Auth
 {
     [ApiController]
@@ -14,10 +16,13 @@ namespace Rubns.WebAPI.Controllers.V1.Auth
         }
 
         [HttpPost]
-        public IActionResult LogIn(LoginRequestDTO loginRequest)
+        public async Task<IActionResult> LogIn(LoginRequestDTO loginRequest)
         {
 
-            var result = PostLogIn.LogIn(loginRequest);
+            var result = await PostLogIn.LogIn(loginRequest);
+
+            if (result is not null)
+                return Ok(result);
 
             return BadRequest();
         }

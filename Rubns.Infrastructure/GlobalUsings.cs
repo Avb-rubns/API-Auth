@@ -13,3 +13,7 @@ global using System.Data;
 global using System.Reflection;
 global using System.Security.Cryptography;
 global using System.Text;
+global using Microsoft.IdentityModel.Logging;
+global using Rubns.Core.DTOs.Login.JWT;
+global using System.IdentityModel.Tokens.Jwt;
+global using Microsoft.IdentityModel.Tokens;
