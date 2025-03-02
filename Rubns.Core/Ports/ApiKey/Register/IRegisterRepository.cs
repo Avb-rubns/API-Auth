@@ -1,4 +1,6 @@
-﻿namespace Rubns.Core.Ports.Register
+﻿using Rubns.Core.DTOs.ApiKey;
+
+namespace Rubns.Core.Ports.ApiKey.Register
 {
     public interface IRegisterRepository
     {

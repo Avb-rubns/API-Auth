@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Register\Get\" />
+    <Folder Include="ApiKeys\Get\" />
   </ItemGroup>
 
 </Project>

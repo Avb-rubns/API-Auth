@@ -1,9 +1,10 @@
-﻿global using Microsoft.Extensions.Configuration;
+﻿global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
-global using Rubns.Core.DTOs;
-global using Rubns.Core.POCO;
+global using Rubns.Core.DTOs.Login;
+global using Rubns.Core.DTOs.Login.JWT;
 global using Rubns.Core.Ports.ApiKey;
-global using Rubns.Core.Ports.Register;
+global using Rubns.Core.Ports.Login;
 global using Rubns.Core.Services;
 global using ServicesRegister;
 global using System.Reflection;

@@ -1,4 +1,4 @@
-﻿namespace Rubns.Infrastructure.Persistence.Entities
+﻿namespace Rubns.Infrastructure.Persistence.Entities.DB_App
 {
     public class Application
     {

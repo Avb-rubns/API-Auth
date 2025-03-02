@@ -1,4 +1,6 @@
-﻿namespace Rubns.Auth.API
+﻿using Scalar.AspNetCore;
+
+namespace Rubns.Auth.API
 {
     internal static class MiddlewaresConfigurations
     {
@@ -15,14 +17,10 @@
             app.UseRouting();
             app.UseHttpsRedirection();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(option =>
-            {
-                option.SwaggerEndpoint("/swagger/v1/swagger.json", "Rubns.Auth v1");
-                option.SwaggerEndpoint("/swagger/v2/swagger.json", "Rubns.Auth v2");
-            });
 
             app.MapControllers();
+            app.MapOpenApi();
+            app.MapScalarApiReference();
 
             return app;
         }
