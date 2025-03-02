@@ -1,4 +1,4 @@
-﻿namespace Rubns.Core.DTOs
+﻿namespace Rubns.Core.DTOs.ApiKey
 {
     public class TokenRegisterDTO
     {

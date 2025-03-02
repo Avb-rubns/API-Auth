@@ -1,7 +1,4 @@
-﻿
-using Rubns.Infrastructure.Persistence;
-
-namespace Rubns.Infrastructure
+﻿namespace Rubns.Infrastructure
 {
     public static class DependecyContainer
     {
@@ -11,13 +8,13 @@ namespace Rubns.Infrastructure
 
             int level = 120;
 
-            services.AddDbContext<ApplicationDbContextEFC>(options =>
+            services.AddDbContext<AuthDbContextEFC>(options =>
             {
-                options.UseSqlServer(configuration["db"], options =>
+                options.UseSqlServer(configuration.GetConnectionString("dbAuth"), options =>
                 {
                     options.EnableRetryOnFailure();
                     options.UseCompatibilityLevel(level);
-                    options.CommandTimeout(null);
+                    options.CommandTimeout(240);
                 });
                 if (configuration[V].ToString() == "dev")
                 {

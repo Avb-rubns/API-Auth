@@ -1,10 +1,13 @@
-﻿namespace Rubns.Infrastructure.Persistence.Repositories
+﻿using Rubns.Core.DTOs.ApiKey;
+using Rubns.Core.Ports.ApiKey.Register;
+
+namespace Rubns.Infrastructure.Persistence.Repositories.DB_Apps
 {
     internal class RegisterRepository : IRegisterRepository
     {
-        ApplicationDbContextEFC Context { get; }
+        AuthDbContextEFC Context { get; }
 
-        public RegisterRepository(ApplicationDbContextEFC context)
+        public RegisterRepository(AuthDbContextEFC context)
         {
             Context = context;
         }

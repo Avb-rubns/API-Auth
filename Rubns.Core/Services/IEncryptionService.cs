@@ -1,7 +1,10 @@
-﻿namespace Rubns.Core.Services
+﻿using Rubns.Core.DTOs.ApiKey;
+
+namespace Rubns.Core.Services
 {
     public interface IEncryptionService
     {
-        string GenerateToken(RegisterDTO register,string wordSecret);
+        string GenerateApiKey(RegisterDTO register);
+        bool ValidatePass(string pass,  string passUser);
     }
 }

@@ -1,11 +1,12 @@
 ﻿
 namespace Rubns.Infrastructure.Persistence
 {
-    public class ApplicationDbContextEFC : DbContext
+    public class AuthDbContextEFC : DbContext
     {
-        public ApplicationDbContextEFC(DbContextOptions<ApplicationDbContextEFC> options) : base(options)
+        public AuthDbContextEFC(DbContextOptions<AuthDbContextEFC> options) : base(options)
         {
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
+
     }
 }
