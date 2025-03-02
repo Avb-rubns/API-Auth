@@ -13,7 +13,7 @@ Implementa **Arquitectura Limpia (Clean Architecture)** y utiliza **Entity Frame
 - **Entity Framework Core (EFC)**  
 - **Dapper**  
 - **Inyección de Dependencias**  
-- **Swagger** (para documentación)  
+- **Scala** (para documentación)  
 - **SQL Server** (como base de datos)  
 
 ---
