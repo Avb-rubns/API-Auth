@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace Rubns.Infrastructure.Services
+﻿namespace Rubns.Infrastructure.Services
 {
     internal class LogInService : ILogInService
     {

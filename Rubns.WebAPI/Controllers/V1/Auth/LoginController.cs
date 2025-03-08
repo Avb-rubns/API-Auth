@@ -1,7 +1,4 @@
-﻿
-using System.Threading.Tasks;
-
-namespace Rubns.WebAPI.Controllers.V1.Auth
+﻿namespace Rubns.WebAPI.Controllers.V1.Auth
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
@@ -24,7 +21,7 @@ namespace Rubns.WebAPI.Controllers.V1.Auth
             if (result is not null)
                 return Ok(result);
 
-            return BadRequest();
+            return Unauthorized(new { message = "Credenciales incorrectas." });
         }
     }
 }

@@ -3,10 +3,21 @@
     public static class DependecyContainer
     {
         private const string V = "Enviroment";
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructureAsync(this IServiceCollection services, IConfiguration configuration)
         {
 
             int level = 120;
+
+            using var connection = new SqlConnection(configuration.GetConnectionString("dbAuth"));
+
+            connection.Open();
+
+            var query = $"SELECT compatibility_level FROM sys.databases where name = '{connection.Database}'";
+
+            var levelDB = connection.QueryFirstOrDefault<int>(query, commandType: CommandType.Text);
+            connection.Close();
+
+            level = levelDB.CompareTo(level) < 0 ? level : levelDB;
 
             services.AddDbContext<AuthDbContextEFC>(options =>
             {

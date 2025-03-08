@@ -15,7 +15,6 @@ namespace Rubns.Infrastructure.Persistence.Repositories.DB_Auth
             UserDTO result = new();
             try
             {
-                Console.WriteLine(AuthDbContextEFC.Database.GetConnectionString());
                 await using var connection = new SqlConnection(AuthDbContextEFC.Database.GetConnectionString());
                 await connection.OpenAsync();
 
