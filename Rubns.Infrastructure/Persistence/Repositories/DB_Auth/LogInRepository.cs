@@ -5,7 +5,6 @@ namespace Rubns.Infrastructure.Persistence.Repositories.DB_Auth
     {
         AuthDbContextEFC AuthDbContextEFC { get; }
 
-
         public LogInRepository(AuthDbContextEFC authDbContextEFC)
         {
             AuthDbContextEFC = authDbContextEFC;
@@ -23,14 +22,15 @@ namespace Rubns.Infrastructure.Persistence.Repositories.DB_Auth
                 var user = await connection.QuerySingleOrDefaultAsync<UserDTO>(proc, new { email }, commandType: CommandType.StoredProcedure);
                 await connection.CloseAsync();
 
-                if(user is not null)
+                if (user is not null)
                 {
                     result = user;
                 }
 
-            }catch(Exception e)
+            }
+            catch
             {
-                Console.WriteLine(e.Message);
+                throw;
             }
 
             return result;

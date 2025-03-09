@@ -6,6 +6,6 @@
         public int Name { get; set; }
         public int Email { get; set; }
         public int Password { get; set; }
-        public int RolID { get; set; }
+        public int? RolID { get; set; }
     }
 }

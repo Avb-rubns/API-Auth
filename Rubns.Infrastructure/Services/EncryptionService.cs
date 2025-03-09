@@ -1,4 +1,5 @@
-﻿namespace Rubns.Infrastructure.Services
+﻿
+namespace Rubns.Infrastructure.Services
 {
     internal class EncryptionService : IEncryptionService
     {
@@ -47,6 +48,30 @@
 
                 result = passUser.Equals(passHash);
             }
+
+            return result;
+        }
+
+        public string GeneratePassTemp(RegisterUserDTO register)
+        {
+            string result = string.Empty;
+            string Salt = Configuration["WordSecretPass"];
+
+            byte[] salt = Encoding.UTF8.GetBytes(Salt);
+
+            string[] temp = register.Email.Split('@');
+
+            byte[] userPass = Encoding.UTF8.GetBytes(temp[0]);
+
+            using (var hmacsha256 = new HMACSHA256(salt))
+            {
+                byte[] hash = hmacsha256.ComputeHash(userPass);
+                var passHash = BitConverter.ToString(hash).Replace("-", "").ToLower();
+
+                result = passHash;
+
+            }
+
 
             return result;
         }
