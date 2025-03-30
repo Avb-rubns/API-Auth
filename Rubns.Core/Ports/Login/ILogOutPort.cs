@@ -1,9 +1,7 @@
-﻿using Rubns.Core.DTOs.LogIn;
-
-namespace Rubns.Core.Ports.Login
+﻿namespace Rubns.Core.Ports.Login
 {
     public interface ILogOutPort
     {
-        Task<bool> LogOut(RefreshTokenRequestDTO token);
+        Task<bool> LogOut(string token);
     }
 }

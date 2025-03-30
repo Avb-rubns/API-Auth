@@ -24,7 +24,7 @@ namespace Rubns.Infrastructure.Services
             if (string.IsNullOrEmpty(claims))
                 throw new Exception("Error generating JWT claims.");
 
-            var expireTime = DateTime.UtcNow.AddHours(10);
+            var expireTime = DateTime.UtcNow.AddMinutes(Convert.ToInt64(Configuration["JWT:Expiration"]));
             long unixTime = ((DateTimeOffset)expireTime).ToUnixTimeSeconds();
 
             return new JWT
@@ -42,10 +42,10 @@ namespace Rubns.Infrastructure.Services
             {
                 { "firstName", user.UserName },
                 { "email", user.Email },
-                { "iss", "RUBNS-AUTH" },
-                { "validAudience", "RUBNS" },
+                { "iss", Configuration["JWT:Issuer"] },
+                { "validAudience", Configuration["JWT:Audience"] },
                 { "iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds() },
-                { "exp", DateTimeOffset.UtcNow.AddHours(10).ToUnixTimeSeconds() },
+                { "exp", DateTimeOffset.UtcNow.AddMinutes(Convert.ToInt64(Configuration["JWT:Expiration"])).ToUnixTimeSeconds() },
                 { "role", new List<string> { user.Value } },
                 { "levelPermission", user.LevelPermission.ToString() },
                 { "status", user.Status },

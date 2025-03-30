@@ -7,5 +7,6 @@ namespace Rubns.Core.Ports.SessionUser
         Task<SessionUserDTO> FindAsyn(string token);
         Task<int> AddSessionAsync(int userId, string token);
         Task<int> DeleteSessionAsync(string token);
+        Task<int> UpdateSessionUserAsync(SessionUserDTO session);
     }
 }

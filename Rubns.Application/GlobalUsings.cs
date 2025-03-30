@@ -1,7 +1,10 @@
 ﻿global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Rubns.Core.DTOs.ApiKey;
 global using Rubns.Core.DTOs.Login;
+global using Rubns.Core.DTOs.LogIn;
+global using Rubns.Core.DTOs.LogOut;
 global using Rubns.Core.DTOs.Users;
 global using Rubns.Core.POCO.ResponseAPI;
 global using Rubns.Core.Ports.ApiKey;

@@ -94,3 +94,24 @@ BEGIN
 	SELECT @Result AS Result;
 END
 GO
+GO
+IF OBJECT_ID(N'p_UserByID', N'P') IS NOT NULL
+    DROP PROCEDURE p_UserByID;
+GO
+
+CREATE PROCEDURE p_UserByID @ID INT
+AS
+BEGIN
+    SELECT
+		usr.UserID
+		,usr.Name as UserName
+		,Email
+		,Password
+		,Value
+		,LevelPermission
+		,Status
+    FROM Users as usr
+	INNER JOIN Rols as rol on usr.RolID = rol.RolID
+    WHERE 
+	usr.UserID = @ID;
+END

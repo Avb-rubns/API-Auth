@@ -1,24 +1,29 @@
 ﻿
+using Microsoft.Extensions.Configuration;
+
 namespace Rubns.Application.Login.Post
 {
-    internal class LogInUseCase : IPostLogInPort<AuthResponseDTO>
+    internal class LogInUseCase : ILogInPort<AuthResponseDTO>
     {
         IEncryptionService EncryptionService { get; }
         ILogInRepository LogInRepository { get; }
         ILogInService LogInService { get; }
         ILogger Logger { get; }
+        private readonly IConfiguration Configuration;
         ISessionUserRepository SessionUserRepository { get; }
         public LogInUseCase(IEncryptionService encryptionService,
             ILogInRepository logInRepository,
             ILogInService logInService,
             ILogger logger,
-            ISessionUserRepository sessionUserRepository)
+            ISessionUserRepository sessionUserRepository,
+            IConfiguration configuration)
         {
             EncryptionService = encryptionService;
             LogInRepository = logInRepository;
             LogInService = logInService;
             Logger = logger;
             SessionUserRepository = sessionUserRepository;
+            Configuration = configuration;
         }
 
         public async Task<AuthResponseDTO> LogIn(LoginRequestDTO login)
@@ -28,7 +33,7 @@ namespace Rubns.Application.Login.Post
             string refreshToken = string.Empty;
             try
             {
-                var user = await LogInRepository.GetUserByEmail(login.Email);
+                var user = await LogInRepository.GetUserByEmailAsync(login.Email);
                 if (user.Email is null)
                 {
                     return null;
@@ -49,6 +54,7 @@ namespace Rubns.Application.Login.Post
                     {
                         auth.RefreshToken = refreshToken;
                         auth.AccessToken = jwt;
+                        auth.Expiration = DateTimeOffset.UtcNow.AddMinutes(Convert.ToInt64(Configuration["JWT:Expiration"])).ToUnixTimeSeconds();
 
                     }
                 }

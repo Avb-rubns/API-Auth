@@ -6,10 +6,10 @@ namespace Rubns.WebAPI.Controllers.V1
     [ApiVersion("1.0")]
     public class LoginController : ControllerBase
     {
-        IPostLogInPort<AuthResponseDTO> PostLogIn { get; }
+        ILogInPort<AuthResponseDTO> PostLogIn { get; }
         ILogOutPort LogOutPort { get; }
 
-        public LoginController(IPostLogInPort<AuthResponseDTO> postLogIn
+        public LoginController(ILogInPort<AuthResponseDTO> postLogIn
             , ILogOutPort logOut)
         {
             PostLogIn = postLogIn;
@@ -27,12 +27,13 @@ namespace Rubns.WebAPI.Controllers.V1
 
             return Unauthorized(new { message = "Credenciales incorrectas o usuario no registrado." });
         }
-        [HttpPost("logout")]
-        public async Task<IActionResult> LogOut(RefreshTokenRequestDTO refreshToken)
+        [HttpDelete("logout")]
+        public async Task<IActionResult> LogOut()
         {
+            var refreshToken = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             if (await LogOutPort.LogOut(refreshToken))
             {
-                return Ok();
+                return Ok(new { message = "Sesión cerrada." });
             }
             return BadRequest();
         }

@@ -1,6 +1,4 @@
-﻿using Rubns.Core.DTOs.LogIn;
-
-namespace Rubns.Application.Login.Post
+﻿namespace Rubns.Application.Login.Post
 {
     internal class LogOutUseCase : ILogOutPort
     {
@@ -14,14 +12,12 @@ namespace Rubns.Application.Login.Post
             Logger = logger;
         }
 
-        public async Task<bool> LogOut(RefreshTokenRequestDTO token)
+        public async Task<bool> LogOut(string token)
         {
             bool result = false;
             try
             {
-
-                return await SessionUserRepository.DeleteSessionAsync(token.RefreshToken) > 0;
-
+                return await SessionUserRepository.DeleteSessionAsync(token) > 0;
             }
             catch (Exception e)
             {
