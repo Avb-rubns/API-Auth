@@ -1,16 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
-using Rubns.Core.DTOs.ApiKey;
-using Rubns.Core.POCO.ResponseAPI;
-
+﻿
 namespace Rubns.Application.Register.Post
 {
     internal class GenerateKeyUseCase : IGenerateKeyPort<ResponseData<string>>
     {
         IEncryptionService EncryptionService { get; }
+        ILogger Logger { get; }
 
-        public GenerateKeyUseCase(IEncryptionService encryptionService)
+        public GenerateKeyUseCase(IEncryptionService encryptionService
+            , ILogger logger)
         {
             EncryptionService = encryptionService;
+            Logger = logger;
         }
 
         public ResponseData<string> GenerateKey(RegisterDTO register, HttpRequest? request)
@@ -30,9 +30,9 @@ namespace Rubns.Application.Register.Post
                 }
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Logger.Error(e, "An error occurred: {ErrorMessage}", e.Message);
             }
             response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
             response.Message = "Por el momento no se puede generar el apikey.";

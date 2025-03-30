@@ -5,6 +5,9 @@ namespace Rubns.Core.Services
     public interface IEncryptionService
     {
         string GenerateApiKey(RegisterDTO register);
-        bool ValidatePass(string pass,  string passUser);
+
+        string GeneratePassTemp(RegisterUserDTO register);
+        bool ValidatePass(string pass, string passUser);
+
     }
 }

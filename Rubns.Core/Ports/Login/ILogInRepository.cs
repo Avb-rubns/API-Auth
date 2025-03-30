@@ -3,6 +3,7 @@
     public interface ILogInRepository
     {
 
-        Task<UserDTO> GetUserByEmail(string email);
+        Task<UserDTO> GetUserByEmailAsync(string email);
+        Task<UserDTO> GetUserByIDAsync(int ID);
     }
 }

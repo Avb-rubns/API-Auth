@@ -1,15 +1,14 @@
-﻿using Rubns.Core.DTOs.ApiKey;
-using Rubns.Core.Ports.ApiKey.Register;
-
+﻿
 namespace Rubns.Application.Register.Post
 {
     internal class RegisterAppUseCase : IRegisterInputPort
     {
-        IEncryptionService EncryptionService { get;  }
-
-        public RegisterAppUseCase(IEncryptionService encryptionService )
+        IEncryptionService EncryptionService { get; }
+        ILogger Logger { get; }
+        public RegisterAppUseCase(IEncryptionService encryptionService, ILogger logger)
         {
             EncryptionService = encryptionService;
+            Logger = logger;
         }
 
         public Task RegisterAppAsync(RegisterDTO registerDTO, HttpRequest? request)
@@ -19,12 +18,11 @@ namespace Rubns.Application.Register.Post
                 var apikey = EncryptionService.GenerateApiKey(registerDTO);
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Logger.Error(e, "An error occurred: {ErrorMessage}", e.Message);
+
             }
-
-
             throw new NotImplementedException();
         }
     }

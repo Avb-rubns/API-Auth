@@ -1,4 +1,5 @@
-﻿using Scalar.AspNetCore;
+﻿using Rubns.Infrastructure.Services;
+using Scalar.AspNetCore;
 
 namespace Rubns.Auth.API
 {
@@ -7,6 +8,7 @@ namespace Rubns.Auth.API
         public static WebApplication ConfigureMiddlewares(this WebApplication app)
         {
 
+            app.UseRouting();
             app.UseCors(option =>
             {
                 option.AllowAnyOrigin();
@@ -14,9 +16,8 @@ namespace Rubns.Auth.API
                 option.AllowAnyHeader();
             });
 
-            app.UseRouting();
+            app.UseMiddleware<JwtValidationMiddleware>();
             app.UseHttpsRedirection();
-
 
             app.MapControllers();
             app.MapOpenApi();
