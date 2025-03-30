@@ -13,8 +13,14 @@
         {
             modelBuilder.Entity<User>(e =>
             {
-                e.ToTable("Users",schema:"dbo");
+                e.ToTable("Users", schema: "dbo");
                 e.HasKey(k => k.UserID);
+            });
+
+            modelBuilder.Entity<SessionUser>(e =>
+            {
+                e.ToTable("SessionUsers", schema: "dbo");
+                e.HasKey(k => k.ID);
             });
 
             base.OnModelCreating(modelBuilder);

@@ -21,7 +21,7 @@ namespace Rubns.Application.User.Post
             try
             {
                 string passTemp = EncryptionService.GeneratePassTemp(registerUser);
-                int create =  await UserRepository.RegisterAsync(registerUser,passTemp);
+                int create = await UserRepository.RegisterAsync(registerUser, passTemp);
                 result = create > 0 ? true : false;
 
             }

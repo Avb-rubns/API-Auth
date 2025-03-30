@@ -1,4 +1,6 @@
-﻿namespace Rubns.Infrastructure.Services
+﻿using Rubns.Core.DTOs.Login;
+
+namespace Rubns.Infrastructure.Services
 {
     internal class LogInService : ILogInService
     {
@@ -58,6 +60,11 @@
             var tokenDescriptor = new JwtSecurityToken(new JwtHeader(signingCredentials), payload);
 
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
+        }
+
+        public string CreateRefreshToken()
+        {
+            return Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
         }
     }
 }

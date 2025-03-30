@@ -1,4 +1,4 @@
-﻿namespace Rubns.Core.DTOs.Login.JWT
+﻿namespace Rubns.Core.DTOs.Login
 {
     public class JWT
     {

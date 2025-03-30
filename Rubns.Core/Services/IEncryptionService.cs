@@ -7,6 +7,7 @@ namespace Rubns.Core.Services
         string GenerateApiKey(RegisterDTO register);
 
         string GeneratePassTemp(RegisterUserDTO register);
-        bool ValidatePass(string pass,  string passUser);
+        bool ValidatePass(string pass, string passUser);
+
     }
 }

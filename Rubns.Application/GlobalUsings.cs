@@ -2,12 +2,12 @@
 global using Microsoft.Extensions.DependencyInjection;
 global using Rubns.Core.DTOs.ApiKey;
 global using Rubns.Core.DTOs.Login;
-global using Rubns.Core.DTOs.Login.JWT;
 global using Rubns.Core.DTOs.Users;
 global using Rubns.Core.POCO.ResponseAPI;
 global using Rubns.Core.Ports.ApiKey;
 global using Rubns.Core.Ports.ApiKey.Register;
 global using Rubns.Core.Ports.Login;
+global using Rubns.Core.Ports.SessionUser;
 global using Rubns.Core.Ports.User;
 global using Rubns.Core.Services;
 global using Serilog;
